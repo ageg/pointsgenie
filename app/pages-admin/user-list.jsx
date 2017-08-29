@@ -47,10 +47,10 @@ const AdminUserList = React.createClass({
     UserStore.fetchProfile(id);
   },
 
-  handleAssignPromocardClick(cip, e) {
+  handleAssignAuthorizationClick(cip, e) {
     e.preventDefault();
-    if (confirm(`Êtes-vous sûr de vouloir attribuer une promocarte a ${cip}?`)) {
-      UserStore.assignPromocard(cip);
+    if (confirm(`Êtes-vous sûr de vouloir autoriser ${cip} à postuler?`)) {
+      UserStore.assignAuthorization(cip);
     }
   },
 
@@ -119,9 +119,9 @@ const AdminUserList = React.createClass({
   },
 
   generateListWithSeparator(s) {
-    let content = `cip${s}nom${s}courriel${s}jonc${s}points${s}isPromocard${s}isAdmin\n`;
+    let content = `cip${s}nom${s}courriel${s}jonc${s}points${s}isAuthorized${s}isAdmin\n`;
     for(let user of this.state.users) {
-      content += `${user.cip}${s}${user.name}${s}${user.email}${s}${user.ringSize}${s}${user.totalPoints}${s}${user.promocard && user.promocard.date ? "true": "false"}${s}${user.isAdmin}\n`;
+      content += `${user.cip}${s}${user.name}${s}${user.email}${s}${user.ringSize}${s}${user.totalPoints}${s}${user.authorization && user.authorization.date ? "true": "false"}${s}${user.isAdmin}\n`;
     }
 
     return content;
@@ -167,7 +167,7 @@ const AdminUserList = React.createClass({
     return (
       <ul>
         {this.renderFetchProfileLink(user)}
-        {this.renderAssignPromocardLink(user)}
+        {this.renderAssignAuthorizationLink(user)}
         {this.renderAwardPointsLink(user)}
         {this.renderMakeAdminLink(user)}
         {this.renderAddEmailLink(user)}
@@ -193,12 +193,12 @@ const AdminUserList = React.createClass({
     }
   },
 
-  renderAssignPromocardLink(user) {
-    if (user.promocard && user.promocard.date) {
+  renderAssignAuthorizationLink(user) {
+    if (user.authorization && user.authorization.date) {
       return null;
     } else {
-      const boundOnClick = this.handleAssignPromocardClick.bind(this, user.cip);
-      return (<li><a href="#" onClick={boundOnClick}>Attribuer une promocarte</a></li>);
+      const boundOnClick = this.handleAssignAuthorizationClick.bind(this, user.cip);
+      return (<li><a href="#" onClick={boundOnClick}>Autoriser à postuler</a></li>);
     }
   },
 
@@ -218,7 +218,7 @@ const AdminUserList = React.createClass({
   },
 
   renderAwardPointsLink(user) {
-    if (user.promocard && user.promocard.date) {
+    if (user.authorization && user.authorization.date) {
       let modal = (<AwardPointsModal user={user} onFormSubmit={this.handleAwardPointsSubmit} />);
       return (
         <li>

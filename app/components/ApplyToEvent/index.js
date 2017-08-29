@@ -17,8 +17,7 @@ const ApplyToEvent = React.createClass({
   },
 
   propTypes: {
-    promocard: PropTypes.shape({
-      price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    authorization: PropTypes.shape({
       date: PropTypes.instanceOf(Date),
     }),
   },
@@ -78,7 +77,7 @@ const ApplyToEvent = React.createClass({
 
   render() {
     this.updateEventsStatus();
-    if (this.props.promocard && this.props.promocard.date) {
+    if (this.props.authorization && this.props.authorization.date) {
       return (
         <ApplyToEventSelector ref="wrapper" eventList={this.props.events} isFormSubmitting={this.state.isFormSubmitting}
           alert={this.state.alert} onAlertDismiss={this.handleAlertDismiss}
@@ -90,7 +89,7 @@ const ApplyToEvent = React.createClass({
         <div className="apply-event">
           <h3>Postuler pour un événement</h3>
           <p>
-            Vous devez avoir une promocarte afin de pouvoir postuler à un événement.
+	    Vous n'êtes pas autorisé à postuler
             Veuillez contacter votre association étudiante
           </p>
           {this.renderPossibleEventList()}

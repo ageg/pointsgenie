@@ -41,8 +41,8 @@ const ComponentUserListTable = React.createClass({
             <td>{user.ringSize}</td>
             <td>{this.renderUserPointsLink(user)}</td>
             <td>
-              { user.promocard && user.promocard.date ?
-                <Glyphicon glyph="credit-card" title="Possède une promocarte" /> : null }
+              { user.authorization && user.authorization.date ?
+                <Glyphicon glyph="ok-sign" title="Est autorisé a postuler" /> : null }
               { user.isAdmin ? <Glyphicon glyph="star" title="Est administrateur" /> : null }
             </td>
             <td>
