@@ -23,10 +23,10 @@
     "wbuild": "set NODE_ENV=production&& webpack --config webpack.config.js --separate-stylesheet --optimize-minimize --progress --profile --colors --bail"
   },
   "author": "Hugo Dozois <hugo@dozoisch.com>",
+  "contributors": ["Tommy Savaria <tommy.savaria@protonmail.ch>"],
   "license": "MIT",
   "engines": {
-    "node": ">=0.12.0",
-    "iojs": ">=1.6.0"
+    "node": ">=6.0.0"
   },
   "dependencies": {
     "async": "0.9.x",
