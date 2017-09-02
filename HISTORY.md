@@ -1,9 +1,10 @@
-#History
+# History
 
 ## 61.0.0 (in development)
 - Update to 61e, including versioning scheme (promo.major.minor)
 - Dependencies update for Node v6, perhaps v8 when it becomes the 'Active' version
 - Remove all mentions of the promocarte
+- Migrate swig -> pug (unmaintained) and flummox -> redux (obsolete)
 - Other shit I'll feel like doing
 
 ## 0.8.0
