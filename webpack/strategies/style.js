@@ -4,8 +4,8 @@ import ExtractTextPlugin, { extract } from "extract-text-webpack-plugin";
 export default (config, options) => {
   const cssLoaderQuery = `?${options.optimize ? "" : "-"}minimize`;
   const stylesheetLoaders = [
-    { test: /\.css/, loader: `css${cssLoaderQuery}` },
-    { test: /\.less/, loader: `css${cssLoaderQuery}!less` },
+    { test: /\.css/, loader: `css-loader${cssLoaderQuery}` },
+    { test: /\.less/, loader: `css-loader${cssLoaderQuery}!less-loader` },
   ];
 
   let loaders = [];
@@ -13,9 +13,9 @@ export default (config, options) => {
     if (options.prerender) {
       loader.loader = "null";
     } else if (options.separateStylesheet) {
-      loader.loader = extract("style", loader.loader);
+      loader.loader = extract("style-loader", loader.loader);
     } else {
-      loader.loader = `style!${loader.loader}`;
+      loader.loader = `style-loader!${loader.loader}`;
     }
     loaders.push(loader);
   }
