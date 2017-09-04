@@ -10,7 +10,7 @@ class FAQPage extends Component {
       <div className="faq">
         <h3>Foire aux questions</h3>
         <h5>S.V.P veuillez consulter la charte pour avoir plus d'informations:</h5>
-        <Button bsStyle="primary" href="/charte-e17.pdf">Charte</Button>
+        <Button bsStyle="primary" href="https://tsunami.ageg.ca/index.php/s/aInJH7ZijTnm6vV">Charte</Button>
         <hr/>
 
         <h4>À quoi servent les Points Génie?</h4>
