@@ -5,6 +5,7 @@
 - Chage versioning scheme (promo.major.minor)
 - Dependencies update for Node v8
 - Remove all mentions of the promocarte
+- Remove admin link in navbar if user is not admin
 
 ## 0.8.0
 - Update to 59e
