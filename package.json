@@ -19,11 +19,13 @@
     "test-no-build": "NODE_ENV=test ./node_modules/.bin/mocha --reporter spec ./test/test-*.js",
     "wtest-no-build": "set NODE_ENV=test&& call node_modules/.bin/mocha.cmd --reporter spec test/test-*.js",
     "hot-dev-server": "webpack-dev-server --content-base public --env.development --env.devServer --config webpack.config.js --hot --progress --colors --port 2992 --inline",
-    "build": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.config.js --separate-stylesheet --optimize-minimize --progress --profile --colors --bail",
+    "build": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.config.js --env.separateStylesheet  --env.optimizeMinimize --progress --profile --colors --bail",
     "wbuild": "set NODE_ENV=production&& webpack --config webpack.config.js --separate-stylesheet --optimize-minimize --progress --profile --colors --bail"
   },
   "author": "Hugo Dozois <hugo@dozoisch.com>",
-  "contributors": ["Tommy Savaria <tommy.savaria@protonmail.ch>"],
+  "contributors": [
+    "Tommy Savaria <tommy.savaria@protonmail.ch>"
+  ],
   "license": "MIT",
   "engines": {
     "node": ">=6.0.0"
@@ -41,7 +43,7 @@
     "co": "~4.5.2",
     "co-views": "0.3.x",
     "css-loader": "~0.28.0",
-    "extract-text-webpack-plugin": "^3.0.0",
+    "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "~0.11.1",
     "flummox": "dozoisch/flummox#MountedCheck",
     "git-rev": "0.2.x",

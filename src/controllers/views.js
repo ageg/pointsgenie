@@ -9,8 +9,8 @@ var SCRIPT_URL_APP = publicPath + [].concat(stats.assetsByChunkName.app)[0];
 var SCRIPT_URL_ADMIN = publicPath + [].concat(stats.assetsByChunkName.admin)[0];
 if (process.env.NODE_ENV === "production") {
   var COMMON_CHUNK = stats.assetsByChunkName.commons;
-  STYLE_URL = (publicPath + COMMON_CHUNK[1] +"?" + stats.hash);
-  SCRIPT_URL_COMMON =  publicPath + COMMON_CHUNK[0] + "?" + stats.hash;
+  STYLE_URL = (publicPath + "app.css?" + stats.hash);
+  SCRIPT_URL_COMMON =  publicPath + "commons.js?" + stats.hash;
   SCRIPT_URL_APP += "?" + stats.hash;
   SCRIPT_URL_ADMIN += "?" + stats.hash;
 }

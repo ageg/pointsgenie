@@ -13,7 +13,7 @@ export default (config, options) => {
     if (options.prerender) {
       loader.loader = "null";
     } else if (options.separateStylesheet) {
-      loader.loader = extract("style-loader", loader.loader);
+      loader.loader = extract({ fallback: "style-loader", use: loader.loader});
     } else {
       loader.loader = `style-loader!${loader.loader}`;
     }
