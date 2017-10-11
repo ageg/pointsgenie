@@ -6,7 +6,7 @@ This is the source code for the "Points Genie" site, created for the 57th promo 
 
 ## Basics
 
-To install, first install npm, nodejs@0.11 and mongodb then do
+To install, first install npm, nodejs@8 and mongodb then do
 
     npm install
 
