@@ -2,6 +2,8 @@
 
 This is the source code for the "Points Genie" site, created for the 57th promo of Engineering at UdeS. This is the version for the 61st promoition.
 
+[![Build Status](https://travis-ci.org/NewLunarFire/pointsgenie.svg?branch=master)](https://travis-ci.org/NewLunarFire/pointsgenie)
+
 ## Basics
 
 To install, first install npm, nodejs@0.11 and mongodb then do
