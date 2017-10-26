@@ -53,7 +53,7 @@ var specific = {
   },
   production: {
     app: {
-      port: process.env.PORT || 6161,
+      port: process.env.PORT || 6060,
       name: "Points genie",
       proxy: true,
       keys: ["super-secret-hurr-durr"]
@@ -62,7 +62,7 @@ var specific = {
       url: "mongodb://localhost/promo61",
     },
     cas: {
-      proxyUrl: process.env.CAS_PROXY_URL || 'promo61.ageg.ca',
+      proxyUrl: process.env.CAS_PROXY_URL || 'promo60.ageg.ca',
     },
   }
 };

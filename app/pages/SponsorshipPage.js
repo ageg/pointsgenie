@@ -11,7 +11,7 @@ class SponsorshipPage extends Component {
         <h3>Commandites</h3>
         <blockquote>Les commandites sont de l’argent recueilli par les membres de la promotion qui servira à financer les activités de la promotion finissante. Les commanditaires ont la possibilité de donner un montant proportionnel à la grandeur de la publicité accordée dans l’album, le média électronique et tout autre article, selon un barème déterminé par le Président. 
 </blockquote>
-        <Button bsStyle="primary" href="/commandite-e17.pdf">Document de commandite E17</Button>
+        <Button bsStyle="primary" href="/commandite-a17.pdf">Document de commandite A17</Button>
         <hr/>
 
         <h4>Information générale</h4>
