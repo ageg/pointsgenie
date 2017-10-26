@@ -38,16 +38,16 @@ module.exports = function (app, passport) {
   securedRouter.get("/users/me/applications", applicationController.readForUser);
 
   securedRouter.get("/events" , eventController.readAll);
-  securedRouter.get("/events/all", accessRights.hasPromocard, eventController.readAll);
-  securedRouter.get("/events/upcoming", accessRights.hasPromocard, eventController.getUpcomingEvents);
-  securedRouter.post("/events/openEvent/:id", accessRights.hasPromocard, eventController.openEvent);  
-  securedRouter.post("/events/closeEvent/:id", accessRights.hasPromocard, eventController.closeEvent);
+  securedRouter.get("/events/all", accessRights.isAuthorized, eventController.readAll);
+  securedRouter.get("/events/upcoming", accessRights.isAuthorized, eventController.getUpcomingEvents);
+  securedRouter.post("/events/openEvent/:id", accessRights.isAuthorized, eventController.openEvent);  
+  securedRouter.post("/events/closeEvent/:id", accessRights.isAuthorized, eventController.closeEvent);
 
-  securedRouter.get("/events/:id", accessRights.hasPromocard, eventController.read);
+  securedRouter.get("/events/:id", accessRights.isAuthorized, eventController.read);
 
-  securedRouter.post("/application", accessRights.hasPromocard, applicationController.create);
-  securedRouter.put("/application/:id", accessRights.hasPromocard, applicationController.update);
-  securedRouter.del("/application/:id", accessRights.hasPromocard, applicationController.delete);  
+  securedRouter.post("/application", accessRights.isAuthorized, applicationController.create);
+  securedRouter.put("/application/:id", accessRights.isAuthorized, applicationController.update);
+  securedRouter.del("/application/:id", accessRights.isAuthorized, applicationController.delete);  
 
   securedRouter.get("/schedules/:eventId", scheduleController.getForEvent);
 
@@ -58,7 +58,7 @@ module.exports = function (app, passport) {
   adminRouter.post("/users/:id/awardpoints", userController.awardPoints);
   adminRouter.post("/users/:id/fetchprofile", userController.fetchInfoFromLDAP);
 
-  adminRouter.post("/promocard/:cip", userController.assignPromocard);
+  adminRouter.post("/authorization/:cip", userController.assignAuthorization);
 
   adminRouter.post("/adduser/newuser", userController.createUser);
   adminRouter.post("/adduser/addemail/:id", userController.addEmail);

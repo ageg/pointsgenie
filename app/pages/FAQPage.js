@@ -11,10 +11,10 @@ class FAQPage extends Component {
         <h3>Foire aux questions</h3>
         <h5>S.V.P veuillez consulter la charte pour avoir plus d'informations:</h5>
         <Button bsStyle="primary" href="/charte-a17.pdf">Charte</Button>
-        <hr/>
 
         <h4>À quoi servent les Points Génie?</h4>
         <blockquote>Les Points Génie permettront, en bonne partie, de payer les différents frais reliés à la graduation pour la promotion finissante (Photo des finissants, album, voyage de la finissante, Jonc, etc.)</blockquote>
+
 
         <h4>Pourquoi avons-nous une promo carte?</h4>
         <blockquote>La promocarte permet aux étudiantes de la promotion finissante de postuler à des événements tels que les 5@8. Celle-ci est traditionnellement attibuée par le Directrice Point Génie à tous les étudiants figurant sur la liste de la promotion de la faculté. Cette carte est strictement virtuelle et n'est pas transférable.</blockquote>

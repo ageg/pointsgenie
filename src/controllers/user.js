@@ -67,7 +67,7 @@ exports.createUser = function*() {
   this.body = { user: user };
 };
 
-exports.assignPromocard = function *() {
+exports.assignAuthorization = function *() {
   var cip = this.params.cip.toLowerCase();
   if (!cip.match(/[a-z]{4}[0-9]{4}/)) {
     this.throw("Le cip est d'un format invalide");
@@ -82,15 +82,14 @@ exports.assignPromocard = function *() {
       this.throw("Aucun élève ne possède le cip fourni", 500);
     }
   } else {
-    // If the user already has a promocard, just return
-    if (user.data.promocard && user.data.promocard.date) {
+    // If the user is already authorized, just return
+    if (user.data.authorization && user.data.authorization.date) {
       this.body = { user: user };
       return;
     }
   }
 
-  user.data.promocard = {
-    price: 0,
+  user.data.authorization = {
     date: new Date(),
   };
   yield user.save();

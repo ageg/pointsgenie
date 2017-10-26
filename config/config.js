@@ -59,7 +59,7 @@ var specific = {
       keys: ["super-secret-hurr-durr"]
     },
     mongo: {
-      url: "mongodb://localhost/pointsgenie",
+      url: "mongodb://localhost/promo61",
     },
     cas: {
       proxyUrl: process.env.CAS_PROXY_URL || 'promo60.ageg.ca',

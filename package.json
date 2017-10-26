@@ -1,8 +1,8 @@
 {
   "name": "points-genie",
   "private": "true",
-  "version": "0.8.3",
-  "description": "Site des points genie promo 57 UdeS",
+  "version": "61.0.0",
+  "description": "Site des points genie promo 61 UdeS",
   "keywords": [
     "udes",
     "genie"
@@ -18,15 +18,17 @@
     "test": "npm run build && npm run test-no-build -- --reporter dot",
     "test-no-build": "NODE_ENV=test ./node_modules/.bin/mocha --reporter spec ./test/test-*.js",
     "wtest-no-build": "set NODE_ENV=test&& call node_modules/.bin/mocha.cmd --reporter spec test/test-*.js",
-    "hot-dev-server": "webpack-dev-server --content-base public -ds --config webpack.config.js --hot --progress --colors --port 2992 --inline",
-    "build": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.config.js --separate-stylesheet --optimize-minimize --progress --profile --colors --bail",
+    "hot-dev-server": "webpack-dev-server --content-base public --env.development --env.devServer --config webpack.config.js --hot --progress --colors --port 2992 --inline",
+    "build": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.config.js --env.separateStylesheet  --env.optimizeMinimize --progress --profile --colors --bail",
     "wbuild": "set NODE_ENV=production&& webpack --config webpack.config.js --separate-stylesheet --optimize-minimize --progress --profile --colors --bail"
   },
   "author": "Hugo Dozois <hugo@dozoisch.com>",
+  "contributors": [
+    "Tommy Savaria <tommy.savaria@protonmail.ch>"
+  ],
   "license": "MIT",
   "engines": {
-    "node": ">=0.12.0",
-    "iojs": ">=1.6.0"
+    "node": ">=6.0.0"
   },
   "dependencies": {
     "async": "0.9.x",
@@ -40,13 +42,13 @@
     "classnames": "~1.2.1",
     "co": "~4.5.2",
     "co-views": "0.3.x",
-    "css-loader": "~0.12.0",
-    "extract-text-webpack-plugin": "~0.6.0",
-    "file-loader": "~0.8.1",
+    "css-loader": "~0.28.0",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "file-loader": "~0.11.1",
     "flummox": "dozoisch/flummox#MountedCheck",
     "git-rev": "0.2.x",
     "glob": "~5.0.5",
-    "json-loader": "~0.5.1",
+    "json-loader": "~0.5.7",
     "koa": "~0.19.1",
     "koa-bodyparser": "~1.6.0",
     "koa-compress": "1.0.x",
@@ -59,32 +61,31 @@
     "koa-response-time": "^1.0.2",
     "koa-router": "~4.3.2",
     "koa-static-cache": "~3.1.0",
-    "ldapjs": "mcavage/node-ldapjs#6f5838768873016877863d12f5ee0ff7192ac255",
+    "ldapjs": "~1.0.0",
     "less": "~2.5.0",
-    "less-loader": "~2.2.0",
+    "less-loader": "~4.0.5",
     "lodash": "~3.8.0",
     "mocha": "~2.2.4",
-    "mongoose": "^4.7.7",
-    "nodemon": "~1.3.7",
+    "mongoose": "^4.11.0",
+    "nodemon": "~1.11.0",
     "null-loader": "~0.1.1",
     "passport-local": "1.0.x",
     "passport-strategy": "1.0.x",
     "pikaday": "~1.3.2",
     "react": "~0.13.2",
     "react-bootstrap": "~0.21.2",
-    "react-hot-loader": "~1.2.6",
+    "react-hot-loader": "~1.3.1",
     "react-router": "dozoisch/react-router#2e375e94033e1cab5ed5b922395a79e368bb1929",
     "react-router-bootstrap": "~0.13.0",
     "react-select": "~0.6.0",
     "should": "~6.0.1",
-    "style-loader": "~0.12.1",
+    "style-loader": "~0.18.2",
     "superagent": "~1.2.0",
     "supertest": "0.15.x",
     "swig": "1.4.x",
-    "url-loader": "~0.5.5",
-    "webpack": "~1.10.1",
-    "webpack-dev-server": "~1.10.1",
-    "xml2js": "0.4.x",
-    "yargs": "~3.8.0"
+    "url-loader": "~0.5.9",
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.7.1",
+    "xml2js": "0.4.x"
   }
 }

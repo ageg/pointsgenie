@@ -1,6 +1,6 @@
 import React from "react";
 
-import Promocard from "../components/Promocard";
+import Authorization from "../components/Authorization";
 import Jonc from "../components/Jonc";
 import GeneralInfo from "../components/GeneralInfo";
 import PasswordChange from "../components/PasswordChange";
@@ -15,7 +15,7 @@ const ProfilePage = React.createClass({
       <div className="user-info">
         <h3>Profil</h3>
         <GeneralInfo infos={user} />
-        <Promocard promocard={user.promocard} />
+        <Authorization authorization={user.authorization} />
         <Jonc ringSize={user.ringSize} />
       </div>
     );

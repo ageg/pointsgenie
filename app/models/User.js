@@ -19,8 +19,7 @@ class User extends Model {
       },
     } ],
     totalPoints: { type: Number },
-    promocard: { type: Object, shape: {
-        price: { type: Number },
+    authorization: { type: Object, shape: {
         date: { type: Date },
       },
     }

@@ -2,43 +2,29 @@ import { join } from "path";
 import _ from "lodash";
 import webpack from "webpack";
 import strategies from "./strategies";
-import yargs from "yargs";
 
-
-const argv = yargs
-  .usage("Usage: $0 [options] --api-url [url]")
-  .alias("a", "api-url")
-  .alias("p", "optimize-minimize")
-  .alias("d", "debug")
-  .alias("s", "dev-server")
-  .argv;
-
-const defaultOptions = {
-  development: argv.debug,
+const defaultEnv = {
   docs: false,
   test: false,
-  optimize: argv.optimizeMinimize,
-  devServer: argv.devServer,
-  separateStylesheet: argv.separateStylesheet,
-  apiUrl: argv.apiUrl || ""
+  apiUrl: ""
 };
 
-export default (options) => {
-  options = _.merge({}, defaultOptions, options);
+export default (env, argv) => {
+  env = _.merge({}, defaultEnv, env);
 
-  options.publicPath = options.devServer ? "//localhost:2992/_assets/" : "";
-  const environment = options.test || options.development ? "development" : "production";
+  env.publicPath = env.devServer ? "//localhost:2992/_assets/" : "";
+  const environment = env.test || env.development ? "development" : "production";
 
-  const babelLoader = "babel?optional[]=runtime" +
+  const babelLoader = "babel-loader?optional[]=runtime" +
     "&optional[]=es7.objectRestSpread&optional[]=es7.asyncFunctions&optional[]=es7.classProperties";
 
-  const reactLoader = options.development ? `react-hot!${babelLoader}` : babelLoader;
-  const chunkFilename = (options.devServer ? "[id].js" : "[name].js") +
-    (options.longTermCaching ? "?[chunkhash]" : "");
+  const reactLoader = env.development ? `react-hot-loader!${babelLoader}` : babelLoader;
+  const chunkFilename = (env.devServer ? "[id].js" : "[name].js") +
+    (env.longTermCaching ? "?[chunkhash]" : "");
 
   const root = join(__dirname, "..");
 
-  options.excludeFromStats = [
+  env.excludeFromStats = [
     /node_modules/,
   ];
 
@@ -52,7 +38,7 @@ export default (options) => {
       path: join(root, "build", "public"),
       filename: "[name].js",
       chunkFilename: chunkFilename,
-      publicPath: options.publicPath,
+      publicPath: env.publicPath,
       sourceMapFilename: "debugging/[file].map",
     },
 
@@ -60,7 +46,7 @@ export default (options) => {
     ],
 
     resolve: {
-      extensions: ["",".js",".jsx"],
+      extensions: [".js",".jsx"],
       alias: {
         // shared: join(root, "shared"),
         // client: join(root, "client"),
@@ -72,9 +58,9 @@ export default (options) => {
       loaders: [
         { test: /\.(js|jsx)/, loader: reactLoader, exclude: /node_modules/ },
         { test: /\.json/, loader: "json" },
-        { test: /\.(woff|woff2)/, loader: "url?limit=100000" },
-        { test: /\.(png|jpg|jpeg|gif|svg)/, loader: "url?limit=100000" },
-        { test: /\.(ttf|eot)/, loader: "file" },
+        { test: /\.(woff|woff2)/, loader: "url-loader?limit=100000" },
+        { test: /\.(png|jpg|jpeg|gif|svg)/, loader: "url-loader?limit=100000" },
+        { test: /\.(ttf|eot)/, loader: "file-loader" },
       ]
     },
 
@@ -87,19 +73,19 @@ export default (options) => {
       new webpack.DefinePlugin({
         "process.env": {
           NODE_ENV: JSON.stringify(environment),
-          API_URL: JSON.stringify(defaultOptions.apiUrl),
+          API_URL: JSON.stringify(env.apiUrl),
         }
       }),
     ],
 
     devServer: {
       stats: {
-        exclude: options.excludeFromStats
+        exclude: env.excludeFromStats
       }
     }
   };
 
   return strategies.reduce((conf, strategy) => {
-    return strategy(conf, options);
+    return strategy(conf, env);
   }, config);
 }

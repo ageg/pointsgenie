@@ -65,8 +65,8 @@ var UserStore = {
       done();
     });
   },
-  assignPromocard: function (cip, done = function(){}) {
-    userApi.assignPromocard(cip).then((user) => {
+  assignAuthorization: function (cip, done = function(){}) {
+    userApi.assignAuthorization(cip).then((user) => {
       _users[user.id] = user;
       UserStore.notifyChange();
       done();

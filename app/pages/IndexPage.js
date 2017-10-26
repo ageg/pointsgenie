@@ -74,7 +74,7 @@ const IndexPage = React.createClass({
     if (nextEvents.length == 1) {
       return (
         <div className= "index-page" id="index-page">
-          <ApplyToEvent promocard={user.promocard} manageEvent={this.state.events}  />
+          <ApplyToEvent authorization={user.authorization} manageEvent={this.state.events}  />
           <NextSchedule event={nextEvents[0]} />
           <PointsLog log={user.points} />
        </div>
@@ -82,7 +82,7 @@ const IndexPage = React.createClass({
     } else {
       return (
         <div className= "index-page" id="index-page">
-          <ApplyToEvent promocard={user.promocard} manageEvent={this.state.events} />
+          <ApplyToEvent authorization={user.authorization} manageEvent={this.state.events} />
           <PointsLog log={user.points} />
         </div>
       );
