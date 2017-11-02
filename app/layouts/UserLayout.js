@@ -25,6 +25,7 @@ class UserLayout extends Component {
           <Nav bsStyle="pills" stacked>
             <NavItemLink to="index">Accueil</NavItemLink>
             <NavItemLink to="applications">Postulations</NavItemLink>
+            <NavItemLink to="guides">Guides</NavItemLink>
             <NavItemLink to="profile">Profil</NavItemLink>
             <NavItemLink to="students">Liste des étudiants</NavItemLink>
             <NavItemLink to="sponsorship">Commandites</NavItemLink>
