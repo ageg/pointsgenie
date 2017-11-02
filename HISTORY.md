@@ -1,8 +1,12 @@
 # History
 
+## 60.0.0
+- Update to 60e from 61e
+- Changed contact page and documents
+
 ## 61.0.0
 - Update to 61e
-- Chage versioning scheme (promo.major.minor)
+- Change versioning scheme (promo.major.minor)
 - Dependencies update for Node v8
 - Remove all mentions of the promocarte
 - Remove admin link in navbar if user is not admin

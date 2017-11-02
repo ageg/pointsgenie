@@ -99,7 +99,7 @@ const AdminUserList = React.createClass({
         return filterRegex.test(user.cip || "") || filterRegex.test(user.name || "");
       });
     }
-    return _sortByOrder(users, ["isAdmin", this.state.orderBy], [false, this.state.ascending]);
+    return _sortByOrder(users, ["isAdmin", "authorization.isAuthorized", this.state.orderBy], [false, false, this.state.ascending]);
   },
 
   download(content, filename, mime) {
@@ -235,4 +235,3 @@ const AdminUserList = React.createClass({
 });
 
 export default AdminUserList;
-

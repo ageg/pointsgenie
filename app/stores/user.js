@@ -18,6 +18,11 @@ var UserStore = {
     return userApi.readAll()
       .then((users) => {
         users.forEach((user) => {
+          if (user.authorization && user.authorization.date){
+            user.authorization.isAuthorized = true
+          }else{
+            user.authorization.isAuthorized = false
+          }
           _users[user.id] = user;
         });
         UserStore.notifyChange();

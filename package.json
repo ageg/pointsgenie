@@ -1,8 +1,8 @@
 {
   "name": "points-genie",
   "private": "true",
-  "version": "61.0.0",
-  "description": "Site des points genie promo 61 UdeS",
+  "version": "60.0.0",
+  "description": "Site des points genie promo 60 UdeS",
   "keywords": [
     "udes",
     "genie"
@@ -24,6 +24,7 @@
   },
   "author": "Hugo Dozois <hugo@dozoisch.com>",
   "contributors": [
+    "Raphael Drouin <raphael.drouin@usherbrooke.ca>",
     "Tommy Savaria <tommy.savaria@protonmail.ch>"
   ],
   "license": "MIT",
