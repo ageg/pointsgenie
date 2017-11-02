@@ -1,6 +1,6 @@
 # Site des points Genie UdeS
 
-This is the source code for the "Points Genie" site, created for the 57th promo of Engineering at UdeS. This is the version for the 61st promoition.
+This is the source code for the "Points Genie" site, created for the 57th promo of Engineering at UdeS. This is the version for the 60st promotion.
 
 ## Basics
 
