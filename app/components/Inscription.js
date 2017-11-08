@@ -46,8 +46,8 @@ const Inscription = React.createClass({
 
   calculatePromSubtotal(promInscription) {
     const prixMixologie = 25;
-    const dayOneCost = this.calculateOneDayOccupationCost(promInscription.firstDay);
-    const dayTwoCost = this.calculateOneDayOccupationCost(promInscription.secondDay);
+    const dayOneCost = this.calculateOneDayOccupationCost(promInscription.firstDay, true);
+    const dayTwoCost = this.calculateOneDayOccupationCost(promInscription.secondDay, false);
     let promTotal = dayOneCost + dayTwoCost;
 
     if (promInscription.secondActivity.participation) {
@@ -64,22 +64,22 @@ const Inscription = React.createClass({
     }});
   },
 
-  calculateOneDayOccupationCost(occupationInfo) {
+  calculateOneDayOccupationCost(occupationInfo, isFirstDay) {
     let subtotal = 0;
 
     if (occupationInfo.participation) {
       switch(occupationInfo.occupation) {
         case "Simple":
-          subtotal = 353.37;
+          subtotal = isFirstDay ? 411.50 : 414.50;
           break;
         case "Double":
-          subtotal = 275.37;
+          subtotal = isFirstDay ? 333.50 : 336.50;
           break;
         case "Triple":
-          subtotal = 258.37;
+          subtotal = isFirstDay ? 316.50 : 319.50;
           break;
         case "Quadruple":
-          subtotal = 248.37;
+          subtotal = isFirstDay ? 307.50 : 310.50;
           break;
       }
 
