@@ -19,30 +19,59 @@ const Invoice = React.createClass({
 
   renderFacture: function() {
     return(
-      <div>
-        <div>
-          <h4>Cérémonie de remise de jonc: {this.state.user.factureJonc} $</h4>
+      <div className="invoice__items">
+        <div className="row invoice__spacer">
+          <div className="col-sm-6 invoice__column-title">Articles</div>
+          
+          <div className="col-sm-6 invoice__column-title invoice__column-price">Prix</div>
         </div>
-        <div>
-          <h4>Voyage: {this.state.user.factureVoyage} $</h4>
+
+        <div className="row invoice__spacer">
+          <div className="col-sm-6">Cérémonie de la remise du jonc</div>
+          
+          <div className="col-sm-6 invoice__column-price">{this.state.user.factureJonc} $</div>
         </div>
-        <div>
-          <h4>Bal: {this.state.user.promInscription.cost} $</h4>
+
+        <div className="row">
+          <div className="col-sm-6">Voyage</div>
+          
+          <div className="col-sm-6 invoice__column-price">{this.state.user.factureVoyage} $</div>
         </div>
-        <div>
-          <h4>Album de finissants: {this.state.user.factureAlbum} $</h4>
+
+        <div className="row">
+          <div className="col-sm-6">Bal</div>
+          
+          <div className="col-sm-6 invoice__column-price">{this.state.user.promInscription.cost} $</div>
         </div>
-        <div>
-          <h4>Photos de finissants: {this.state.user.facturePhotos} $</h4>
+
+        <div className="row">
+          <div className="col-sm-6">Album de finissants</div>
+          
+          <div className="col-sm-6 invoice__column-price">{this.state.user.factureAlbum} $</div>
         </div>
-        <div>
-          <h4>Manteau: {this.state.user.factureManteau} $</h4>
+
+        <div className="row">
+          <div className="col-sm-6">Photos de finissants</div>
+
+          <div className="col-sm-6 invoice__column-price">{this.state.user.facturePhotos} $</div>
         </div>
-        <div>
-          <h4>Déjà payé (photos): {this.state.user.paid.photo} $</h4>
+
+        <div className="row">
+          <div className="col-sm-6">Manteau</div>
+
+          <div className="col-sm-6 invoice__column-price">{this.state.user.factureManteau} $</div>
         </div>
-        <div>
-          <h4>Déjà payé (voyage): {this.state.user.paid.voyage} $</h4>
+
+        <div className="row">
+          <div className="col-sm-6">Déjà payé (photos)</div>
+          
+          <div className="col-sm-6 invoice__column-price">{this.state.user.paid ? this.state.user.paid.photo : 0} $</div>
+        </div>
+
+        <div className="row">
+          <div className="col-sm-6">Déjà payé (voyage)</div>
+          
+          <div className="col-sm-6 invoice__column-price">{this.state.user.paid ? this.state.user.paid.voyage : 0} $</div>
         </div>
       </div>
     );
@@ -51,8 +80,10 @@ const Invoice = React.createClass({
   renderTotal() {
     const balance = this.state.user.invoiceBalance;
     return (
-      <div style={{paddingBottom: 30}}>
-        <h4>BALANCE: {balance} $</h4>
+      <div>
+        <div className="row">          
+          <div className="col-sm-12 invoice__column-total">Sous-Total: {balance} $</div>
+        </div>
       </div>
     );
   },
@@ -60,9 +91,9 @@ const Invoice = React.createClass({
   render: function() {
     return (
       <form className="form-horizontal">
+      <div className="invoice__separator"></div>
         {this.renderFacture()}
         {this.renderTotal()}
-        <br/>
       </form>
     );
   },
