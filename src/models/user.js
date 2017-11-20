@@ -67,10 +67,10 @@ var UserSchema = new Schema({
     factureAlbum: { type: Number, default: 0 },
     factureManteau: { type: Number, default: 0 },
     facturePhotos: { type: Number, default: 0 },
-    paid: { type: Object, shape: {
-        photo: { type: Number, default: 0 }
-      },
-    },
+    paid: {
+      photo: { type: Number, default: 0 }, 
+      voyage: { type: Number, default: 0 }
+    }
   },
   meta: {
     password: { type: String },
@@ -80,6 +80,7 @@ var UserSchema = new Schema({
 }, {
   toObject: { virtuals: true },
   toJSON : {
+    virtuals: true,
     transform: function (doc, ret, options) {
       // Only act on the parent document
       if ("function" !== typeof doc.ownerDocument) {
@@ -108,6 +109,15 @@ UserSchema.virtual("password").set(function (password) {
 });
 UserSchema.virtual("password").get(function () {
   return this.meta.password;
+});
+UserSchema.virtual("data.invoiceTotal").get(function () {
+  return this.data.promInscription.cost + this.data.factureJonc + this.data.factureAlbum 
+  + this.data.factureManteau + this.data.facturePhotos + this.data.factureVoyage;
+});
+UserSchema.virtual("data.invoiceBalance").get(function () {
+  return this.data.promInscription.cost + this.data.factureJonc + this.data.factureAlbum 
+  + this.data.factureManteau + this.data.facturePhotos + this.data.factureVoyage - this.data.paid.voyage
+  - this.data.paid.photo;
 });
 
 /**

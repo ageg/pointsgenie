@@ -41,16 +41,18 @@ const Invoice = React.createClass({
         <div>
           <h4>Déjà payé (photos): {this.state.user.paid.photo} $</h4>
         </div>
+        <div>
+          <h4>Déjà payé (voyage): {this.state.user.paid.voyage} $</h4>
+        </div>
       </div>
     );
   },
 
   renderTotal() {
-    const user = this.state.user;
-    const total = user.promInscription.cost + user.factureVoyage + user.factureJonc + user.factureAlbum + user.facturePhotos + user.factureManteau;
+    const balance = this.state.user.invoiceBalance;
     return (
       <div style={{paddingBottom: 30}}>
-        <h4>TOTAL: {total} $</h4>
+        <h4>BALANCE: {balance} $</h4>
       </div>
     );
   },

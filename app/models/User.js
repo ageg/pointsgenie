@@ -62,14 +62,17 @@ class User extends Model {
       },
     },
     paid: { type: Object, shape: {
-        photo: { type: Number }
+        photo: { type: Number },
+        voyage: { type: Number }
       },
     },
     factureJonc: { type: Number },
     factureAlbum: { type: Number },
     facturePhotos: { type: Number },
     factureManteau: { type: Number },
-    factureVoyage: { type: Number }
+    factureVoyage: { type: Number },
+    invoiceBalance: { type: Number },
+    invoiceTotal: { type: Number }
   };
 }
 
