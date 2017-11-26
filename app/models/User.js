@@ -66,6 +66,7 @@ class User extends Model {
         voyage: { type: Number }
       },
     },
+    invoiceConfirmed: { type: Boolean },
     factureJonc: { type: Number },
     factureAlbum: { type: Number },
     facturePhotos: { type: Number },

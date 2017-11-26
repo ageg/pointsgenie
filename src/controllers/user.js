@@ -57,6 +57,20 @@ exports.setPromInscription = function *() {
   this.body = { user: user };
 };
 
+exports.confirmInvoice = function *() {
+  if(!this.request.body) {
+    this.throw("Le corps de la requête est vide", 400);
+  }
+
+  var user = this.passport.user;
+  
+  user.data.invoiceConfirmed = this.request.body.invoiceConfirmed;
+  
+  yield user.save();
+
+  this.body = { user: user };
+};
+
 // New function - test implementation
 exports.createUser = function*() {
   if(!this.request.body) {
