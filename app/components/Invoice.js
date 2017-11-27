@@ -27,7 +27,7 @@ const Invoice = React.createClass({
         </div>
 
         <div className="row invoice__spacer">
-          <div className="col-sm-offset-1 col-sm-5">Cérémonie de la remise du jonc</div>
+          <div className="col-sm-offset-1 col-sm-5">Jonc et billets pour la cérémonie</div>
           
           <div className="col-sm-5 invoice__column-price">{this.state.user.factureJonc} $</div>
         </div>
@@ -45,13 +45,13 @@ const Invoice = React.createClass({
         </div>
 
         <div className="row">
-          <div className="col-sm-offset-1 col-sm-5">Album de finissants</div>
+          <div className="col-sm-offset-1 col-sm-5">Album</div>
           
           <div className="col-sm-5 invoice__column-price">{this.state.user.factureAlbum} $</div>
         </div>
 
         <div className="row">
-          <div className="col-sm-offset-1 col-sm-5">Photos de finissants</div>
+          <div className="col-sm-offset-1 col-sm-5">Photos</div>
 
           <div className="col-sm-5 invoice__column-price">{this.state.user.facturePhotos} $</div>
         </div>
