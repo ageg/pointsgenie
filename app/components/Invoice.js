@@ -17,6 +17,26 @@ const Invoice = React.createClass({
     };
   },
 
+  handleConfirmClick() {
+    this.setState({user: {...this.state.user, invoiceConfirmed: true}});
+
+    const body = {invoiceConfirmed: true};
+    
+    request.post("/users/me/confirmInvoice", body, (err, res) => {
+      let state = {};
+
+      // TODO: Add user feedback on processing/error/success
+      if (err) {
+        state.alert = {style: "danger", message: "Erreur non-controlée: " + err.message};
+      } else if (res.status === 200) {
+        state.alert = {style: "success", message: "Changement effectué!"};
+      } else {
+        state.alert = {style: "danger", message: res.body.error};
+      }
+      this.setState(state);
+    });
+  },
+
   renderFacture: function() {
     return(
       <div className="invoice__items">
@@ -88,13 +108,29 @@ const Invoice = React.createClass({
     );
   },
 
+  renderConfirmation() {
+    const invoiceConfirmed = this.state.user.invoiceConfirmed;
+    return (
+      <div className="invoice__confirmation">
+        <div className="invoice__separator"></div>
+        <div className="invoice__confirmation-message">Je confirme que ma facture est exacte.</div>
+        <Button onClick={this.handleConfirmClick} bsStyle="primary" disabled={invoiceConfirmed}>
+          {invoiceConfirmed ? 'Facture confirmée' : 'Confirmer ma facture'}
+        </Button>
+      </div>
+    );
+  },
+
   render: function() {
     return (
-      <form className="form-horizontal">
-        <div className="invoice__separator"></div>
-        {this.renderFacture()}
-        {this.renderTotal()}
-      </form>
+      <div>
+        <form className="form-horizontal">
+          <div className="invoice__separator"></div>
+          {this.renderFacture()}
+          {this.renderTotal()}
+        </form>
+        {this.renderConfirmation()}
+      </div>
     );
   },
 });

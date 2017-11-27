@@ -36,6 +36,7 @@ module.exports = function (app, passport) {
   securedRouter.post("/users/me/password", userController.changePassword);
   securedRouter.post("/users/me/ringSize", userController.setRingSize);
   // securedRouter.post("/users/me/promInscription", userController.setPromInscription);
+  securedRouter.post("/users/me/confirmInvoice", userController.confirmInvoice);
   securedRouter.get("/users/me/applications", applicationController.readForUser);
 
   securedRouter.get("/events" , eventController.readAll);

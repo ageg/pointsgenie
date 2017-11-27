@@ -61,7 +61,8 @@ var UserSchema = new Schema({
         participation: { type: Boolean, default: false },
         accompanied: { type: Boolean, default: false },
       }
-    }, 
+    },
+    invoiceConfirmed: { type: Boolean, default: false },
     factureJonc: { type: Number, default: 0 }, 
     factureVoyage: { type: Number, default: 0 },
     factureAlbum: { type: Number, default: 0 },
