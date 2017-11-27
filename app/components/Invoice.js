@@ -18,8 +18,6 @@ const Invoice = React.createClass({
   },
 
   handleConfirmClick() {
-    this.setState({user: {...this.state.user, invoiceConfirmed: true}});
-
     const body = {invoiceConfirmed: true};
     
     request.post("/users/me/confirmInvoice", body, (err, res) => {
@@ -30,6 +28,7 @@ const Invoice = React.createClass({
         state.alert = {style: "danger", message: "Erreur non-controlée: " + err.message};
       } else if (res.status === 200) {
         state.alert = {style: "success", message: "Changement effectué!"};
+        this.setState({user: {...this.state.user, invoiceConfirmed: true}});
       } else {
         state.alert = {style: "danger", message: res.body.error};
       }
@@ -108,12 +107,25 @@ const Invoice = React.createClass({
     );
   },
 
+  renderMessage() {
+    if (this.state.alert) {
+      return (
+        <Alert bsStyle={this.state.alert.style} >
+          {this.state.alert.message}
+        </Alert>
+      );
+    }
+    return null;
+  },
+
   renderConfirmation() {
     const invoiceConfirmed = this.state.user.invoiceConfirmed;
+
     return (
       <div className="invoice__confirmation">
         <div className="invoice__separator"></div>
         <div className="invoice__confirmation-message">Je confirme que ma facture est exacte.</div>
+        {this.renderMessage()}
         <Button onClick={this.handleConfirmClick} bsStyle="primary" disabled={invoiceConfirmed}>
           {invoiceConfirmed ? 'Facture confirmée' : 'Confirmer ma facture'}
         </Button>
