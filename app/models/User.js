@@ -72,8 +72,11 @@ class User extends Model {
     facturePhotos: { type: Number },
     factureManteau: { type: Number },
     factureVoyage: { type: Number },
+    rebate: { type: Number },
     invoiceBalance: { type: Number },
-    invoiceTotal: { type: Number }
+    invoiceTotal: { type: Number },
+    valeurPoint: { type: Number },
+    paidTotal: { type: Number }
   };
 }
 

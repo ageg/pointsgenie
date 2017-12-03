@@ -92,6 +92,12 @@ const Invoice = React.createClass({
           
           <div className="col-sm-5 invoice__column-price">- {this.state.user.paid ? this.state.user.paid.voyage : 0} $</div>
         </div>
+
+        <div className="row">
+          <div className="col-sm-offset-1 col-sm-5">Points génies ({this.state.user.valeurPoint}$/point)</div>
+
+          <div className="col-sm-5 invoice__column-price">- {this.state.user.rebate ? this.state.user.rebate : 0} $</div>
+        </div>
       </div>
     );
   },
