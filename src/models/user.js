@@ -71,7 +71,8 @@ var UserSchema = new Schema({
     paid: {
       photo: { type: Number, default: 0 }, 
       voyage: { type: Number, default: 0 }
-    }
+    },
+    rebate: { type: Number, default: 0 }
   },
   meta: {
     password: { type: String },
@@ -118,7 +119,13 @@ UserSchema.virtual("data.invoiceTotal").get(function () {
 UserSchema.virtual("data.invoiceBalance").get(function () {
   return this.data.promInscription.cost + this.data.factureJonc + this.data.factureAlbum 
   + this.data.factureManteau + this.data.facturePhotos + this.data.factureVoyage - this.data.paid.voyage
-  - this.data.paid.photo;
+  - this.data.paid.photo - this.data.rebate;
+});
+UserSchema.virtual("data.valeurPoint").get(function () {
+  return Math.round(this.data.rebate / this.data.totalPoints * 100) / 100;
+});
+UserSchema.virtual("data.paidTotal").get(function () {
+  return this.data.paid.voyage + this.data.paid.photo;
 });
 
 /**
