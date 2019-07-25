@@ -37,14 +37,22 @@ const NavbarLayout = React.createClass({
 
   renderAuthenticatedLinks() {
     const username = this.props.user ? this.props.user.name : "";
+    const isAdmin = this.props.user ? this.props.user.isAdmin : false;
+
     if (!username) {
       return null;
     }
-    return [
+
+    var arr = [
       (<NavItemLink key="profile" to="profile"><Glyphicon glyph="user"/> {username}</NavItemLink>),
-      (<li key="admin"><a href="/admin#/"><Glyphicon glyph="star" /> Admin</a></li>),
       (<NavItemLink key="sginout" to="signout"><Glyphicon glyph="off"/> Déconnexion</NavItemLink>),
     ];
+
+    if (isAdmin) {
+      arr.splice(1, 0, (<li key="admin"><a href="/admin#/"><Glyphicon glyph="star" /> Admin</a></li>));
+    }
+
+    return arr;
   },
 });
 

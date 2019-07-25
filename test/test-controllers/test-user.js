@@ -16,7 +16,7 @@ const URLS = {
   USERS: "/users",
   ME: "/users/me",
   PASSWORD: "/users/me/password",
-  PROMOCARD: "/promocard",
+  AUTHORIZATION: "/authorization",
   // End of urls
   MAKE_ADMIN: "/makeadmin",
   ASSIGN_POINTS: "/awardpoints",
@@ -79,7 +79,7 @@ describe("User", function () {
       .end(done);
     });
     it("/promocard/:anycip should return 401", function (done) {
-      request.post(URLS.PROMOCARD + "/exem1234")
+      request.post(URLS.AUTHORIZATION + "/exem1234")
       .expect(401)
       .end(done);
     });
@@ -166,8 +166,8 @@ describe("User", function () {
         .expect(403)
         .end(done);
       });
-      it("/promocard/:anycip", function (done) {
-        request.post(URLS.PROMOCARD + "/exem1234")
+      it("/authorization/:anycip", function (done) {
+        request.post(URLS.AUTHORIZATION + "/exem1234")
         .expect(403)
         .end(done);
       });
@@ -207,11 +207,11 @@ describe("User", function () {
         .end(done);
       });
     });
-    describe("POST /promocard/:cip", function () {
+    describe("POST /authorization/:cip", function () {
       it("Badly formed Cip should return a 500");
       it("Missing User, but inexistant CIP should return 500");
-      it("Existing User should create the user and assign him a promocard");
-      it("Missing User should create the user and give him promocard");
+      it("Existing User should create the user and authorize it");
+      it("Missing User should create the user and authorize it");
     });
     it("/users/:badId/makeadmin should return 500");
     it("/users/:goodId/makeadmin should make the user admin");
@@ -250,7 +250,7 @@ describe("User", function () {
       it("Existant users should gain points");
     });
     it("/users/:goodId/fetchprofile should complete user infos");
-    it("/promocard/:cip should give a user a promocard");
+    it("/authorizatioon/:cip should give authorize user");
   });
   afterEach(databaseHelper.dropDatabase);
 });

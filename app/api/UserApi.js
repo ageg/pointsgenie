@@ -36,8 +36,8 @@ class UserApi extends ResourceApi {
     return this._doPost(URL, data).then(res => this._singleResourceResponse(res));
   }
 
-  assignPromocard(cip) {
-    const URL = `/promocard/${cip}`;
+  assignAuthorization(cip) {
+    const URL = `/authorization/${cip}`;
     return this._doPost(URL).then(res => this._singleResourceResponse(res));
   }
 

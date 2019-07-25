@@ -5,7 +5,7 @@ module.exports = function (config) {
   /**
    * Connect to database
    */
-  mongoose.connect(config.mongo.url, function (err) {
+  mongoose.connect(config.mongo.url, {useMongoClient: true}, function (err) {
     if (err) {
       console.error("\x1b[31m", "Could not connect to MongoDB!");
       console.log(err);

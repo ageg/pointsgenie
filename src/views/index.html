@@ -18,15 +18,9 @@
   {% block footer %}
     {% if isAuth %}
       <p>
-        <b>Directeur Points Génie</b> - <a href="mailto:Christian-roch.faucher@usherbrooke.ca" >Rocko Faucher</a><br/>
-        <b>Webmestre</b> - <a href="mailto:laurent.huot2@usherbrooke.ca" >Laurent Huot</a><br/>
-        <b>Webmestre</b> - <a href="mailto:guillaume.paquet@usherbrooke.ca" >Guillaume Paquet</a>
+        <b>President</b> - <a href="mailto:justin.brulotte@usherbrooke.ca" >Justin Brûlotte</a>
       </p>
     {% endif %}
-    <p>
-      <b>Version</b> - {{version}} #{{commit}} -
-      <a href={{"https://raw.githubusercontent.com/schmouck/pointsgenie/v" + version +"/HISTORY.md"}}>Changelog</a>
-    </p>
   {% endblock %}
 </div>
 {% block script %}

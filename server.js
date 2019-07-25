@@ -25,7 +25,7 @@ require("./config/database")(config);
 var app = module.exports = koa();
 
 function addProxy(req, res, next) {
-  req.proxy = "promo59.ageg.ca";
+  req.proxy = "promo61.ageg.ca";
   next();
 }
 app.use(c2k(addProxy));

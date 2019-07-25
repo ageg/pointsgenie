@@ -4,8 +4,8 @@ import { Input, Button } from "react-bootstrap";
 import request from "../middlewares/request";
 import UserStore from "../stores/user";
 
-const AdminPromocard = React.createClass({
-  displayName: "AdminPromocard",
+const AdminAuthorization = React.createClass({
+  displayName: "AdminAuthorization",
 
   contextTypes: {
     router: PropTypes.func
@@ -17,13 +17,13 @@ const AdminPromocard = React.createClass({
 
   onSubmit(e) {
     e.preventDefault();
-    UserStore.assignPromocard(this.state.cip, (err, res) => {
+    UserStore.assignAuthorization(this.state.cip, (err, res) => {
       if (!err) {
         if (!this.refs.addOther.getChecked()) {
           return this.context.router.transitionTo("/users");
         }
         this.setState({
-          message: `La promocarte de ${this.state.cip} a ajouté avec succès!`,
+          message: `${this.state.cip} est autorisé avec succès!`,
           cip: null,
         })
       } else {
@@ -51,7 +51,7 @@ const AdminPromocard = React.createClass({
   renderSubmitButton() {
     return (
       <Button type="submit" disabled={!this.state.isValid || this.props.isSubmitting} bsStyle="success">
-        { this.props.isSubmitting ? "En cours...": "Attribuer la promocarte" }
+        { this.props.isSubmitting ? "En cours...": "Autoriser à postuler?" }
       </Button>
     );
   },
@@ -59,7 +59,7 @@ const AdminPromocard = React.createClass({
     const isValid = this.state.isValid;
     return (
       <div>
-        <h3>Attribuer une promocarte</h3>
+        <h3>Autoriser à postuler</h3>
         <form className="form-horizontal" onSubmit={this.onSubmit}>
           <Input type="text" label="Cip" ref="cip" onChange={this.onChange} value={this.state.cip}
             labelClassName="col-md-3"  wrapperClassName="col-md-4" help={this.state.message}
@@ -73,4 +73,4 @@ const AdminPromocard = React.createClass({
   }
 });
 
-export default AdminPromocard;
+export default AdminAuthorization;

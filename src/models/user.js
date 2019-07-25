@@ -22,8 +22,7 @@ var UserSchema = new Schema({
     name: { type: String },
     concentration: { type: Number },
     ringSize: { type: String },
-    promocard: {
-      price: { type: Number },
+    authorization: {
       date: { type: Date },
     },
     totalPoints: { type: Number },

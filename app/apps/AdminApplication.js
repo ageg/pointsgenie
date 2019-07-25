@@ -27,7 +27,7 @@ const AdminApplication = React.createClass({
           <ul className="nav nav-pills nav-stacked">
             <li><Link to="list-events">Événements</Link></li>
             <li><Link to="create-event">Créer un événement</Link></li>
-            <li><Link to="promocard">Attribuer une promocarte</Link></li>
+            <li><Link to="authorization">Autoriser un utilisateur</Link></li>
             <li><Link to="adduser">Ajouter un usager</Link></li>
             <li><Link to="list-users">Usagers</Link></li>
           </ul>
