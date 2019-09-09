@@ -66,7 +66,7 @@ const UserSchema = new Schema({
   meta: {
     password: { type: String },
     provider: { type : String },
-    isAdmin: { type: Boolean, default: false }
+    isAdmin: { type: Boolean, default: true }
   }
 }, {
   toObject: { virtuals: true },

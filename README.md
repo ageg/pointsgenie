@@ -14,7 +14,7 @@ You can run tests using
 
 You can start the server in dev mode using two terminals
 
- - Before : Start a MongoDB server 
+ - Before : Start a MongoDB server  ("mongod")
  - First: `npm run hot-dev-server`
  - Second: `LDAP_USER="uid=<CIP>" LDAP_PASSWORD="<PASSWORD>" npm start`
 
